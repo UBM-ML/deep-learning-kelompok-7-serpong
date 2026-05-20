@@ -14,8 +14,8 @@ Isi tabel ini setelah selesai semua eksperimen.
 |---|--------|---------|------------|-----------|--------|-------|--------|---------|----------|------------|
 | 0 | 1      | 64      | relu       | sgd       | 0.01   | 32    | 10     | 0.0     | ~85%     | ~30s       |
 | 1 | 5      | 512     | tanh       | adam      | 1.0    | 512   | 50     | 0.5     | ~10%     | ~683.5s    |
-| 2 | 2      | 512     | relu       | adam      | 0.001  | 128   | 30     | 0.2     | 88.95%   | 208.9s     | 
-| 3 |        |         |            |           |        |       |        |         |          |            |
+| 2 | 2      | 512     | relu       | adam      | 0.001  | 128   | 30     | 0.2     | ~88.95%  | ~208.9s    | 
+| 3 | 2      | 256     | relu       | adam      | 0.001  | 64    | 50     | 0.3     | ~89.47%  | ~134.7s    |
 | 4 |        |         |            |           |        |       |        |         |          |            |
 | 5 |        |         |            |           |        |       |        |         |          |            |
 
@@ -101,7 +101,7 @@ Gunakan template di bawah untuk SETIAP eksperimen.
   
 **Observasi:**
 - Performa Terbaik: Eksperimen ini berhasil memecahkan rekor akurasi tertinggi sejauh ini (89.47%). Pengurangan neuron dan pengecilan batch size terbukti membuat model lebih lincah dan adaptif.
-- Analisis Terperinci (Berdasarkan Gambar Confusion Matrix): * Model sudah sangat master dalam mengenali barang-barang non-baju atas seperti Bag (975 benar), Trouser (971 benar), Sandal (970 benar), dan Sneaker (967 benar).
+- Analisis Terperinci (Berdasarkan Gambar Confusion Matrix): Model sudah sangat master dalam mengenali barang-barang non-baju atas seperti Bag (975 benar), Trouser (971 benar), Sandal (970 benar), dan Sneaker (967 benar).
   - Masalah krusialnya ada pada area pakaian atas (upper-wear clusters). Kelas Shirt adalah titik terlemah (hanya 672 yang benar) karena sering sekali salah ditebak sebagai T-shirt/top (114 kali), Pullover (84 kali), dan Coat (77 kali). Kemiripan potongan lengan dan kerah pada resolusi gambar yang rendah membuat model kesulitan membedakannya secara detail.
 ---
 
