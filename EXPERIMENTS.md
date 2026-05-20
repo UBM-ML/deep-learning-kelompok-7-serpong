@@ -77,19 +77,32 @@ Gunakan template di bawah untuk SETIAP eksperimen.
 > Hasil eksperimen memperlihatkan bahwa penyesuaian hyperparameter berhasil meningkatkan performa pada model, dari baseline ~85% menjadi 88,95% pada data test. Grafik training menunjukkan bahwa model mampu mempelajari pola data dengan cukup baik, terlihat dari peningkatan accuracy dan penurunan loss. Namun, nilai train accuracy yang lebih tinggi dibandingkan validation accuracy mengindikasikan bahwa model mulai terlalu menyesuaikan diri terhadap data training. Penggunaan dropout sebesar 0,2 diterapkan untuk membantu mengurangi jarak performa antara data training dan validation agar tidak terlalu besar.
 
 **Rencana eksperimen berikutnya:**
-
+> Berdasarkan observasi, model sudah berada di jalur yang benar (akurasi melesat ke 88.95%), namun tanda-tanda overfitting mulai terlihat. Pada Eksperimen #3, kami akan mengisolasi variabel Dropout Rate dengan menaikkannya dari 0.2 menjadi 0.3 untuk menekan overfitting dan merapatkan jarak antara akurasi training dan validasi, sementara hyperparameter lainnya dibuat persis sama dengan Eksperimen #2.
 ---
 
 ### Eksperimen #3
 
 **Apa yang diubah:**
+- Menurunkan jumlah neuron per layer dari 512 menjadi 256.
+- Memperkecil batch size dari 128 menjadi 64.
+- Meningkatkan jumlah epoch dari 30 menjadi 50.
+- Menaikkan sedikit dropout rate dari 0.2 menjadi 0.3.
+- (Fungsi aktivasi relu, optimizer adam, dan learning rate 0.001 tetap dipertahankan).
 
 **Hipotesis:**
+> Dengan memotong jumlah neuron menjadi 256, kita menyederhanakan model agar tidak terlalu "gemuk" dan rawan overfit. Batch size yang lebih kecil (64) akan membuat transisi perbaikan bobot (weight updates) menjadi lebih sering dan dinamis di setiap epoch. Ditambah dengan kompensasi 50 epoch dan peningkatan dropout ke 0.3, model diharapkan punya waktu belajar yang lebih stabil dan menghasilkan akurasi yang lebih tinggi daripada Eksperimen #2
 
 **Hasil:**
-
+- Test accuracy: 89.47%
+- Train accuracy: 92.29%
+- Validation accuracy: 89.40%
+- Train time: 134.7 detik
+- Apakah overfit/underfit? Good Fit / Well-balanced. Jarak antara train accuracy (92.29%) dan validation accuracy (89.40%) menyusut menjadi hanya 2.89%. Ini adalah indikator bahwa model melakukan generalisasi dengan sangat sehat.
+  
 **Observasi:**
-
+- Performa Terbaik: Eksperimen ini berhasil memecahkan rekor akurasi tertinggi sejauh ini (89.47%). Pengurangan neuron dan pengecilan batch size terbukti membuat model lebih lincah dan adaptif.
+- Analisis Terperinci (Berdasarkan Gambar Confusion Matrix): * Model sudah sangat master dalam mengenali barang-barang non-baju atas seperti Bag (975 benar), Trouser (971 benar), Sandal (970 benar), dan Sneaker (967 benar).
+  - Masalah krusialnya ada pada area pakaian atas (upper-wear clusters). Kelas Shirt adalah titik terlemah (hanya 672 yang benar) karena sering sekali salah ditebak sebagai T-shirt/top (114 kali), Pullover (84 kali), dan Coat (77 kali). Kemiripan potongan lengan dan kerah pada resolusi gambar yang rendah membuat model kesulitan membedakannya secara detail.
 ---
 
 ### Eksperimen #4
