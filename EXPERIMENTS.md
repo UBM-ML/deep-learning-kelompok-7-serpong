@@ -56,7 +56,7 @@ Gunakan template di bawah untuk SETIAP eksperimen.
 
 
 **Rencana eksperimen berikutnya:**
-> Menurunkan learning rate menjadi 0.001 agar proses update bobot lebih stabil, mengurangi jumlah hidden layer dan neuron untuk menyederhanakan arsitektur model, mengganti activation function menjadi `relu` agar proses pembelajaran lebih efektif, menurunkan batch size supaya update bobot lebih responsif, serta mengurangi dropout agar model tidak kehilangan terlalu banyak informasi saat training.
+> Menurunkan learning rate agar proses update bobot lebih stabil, mengurangi jumlah hidden layer untuk menyederhanakan arsitektur model, mengganti activation function menjadi `relu` agar proses pembelajaran lebih efektif, menurunkan batch size dan epoch supaya update bobot lebih responsif, serta mengurangi dropout agar model tidak kehilangan terlalu banyak informasi saat training.
 ---
 
 ### Eksperimen #2
