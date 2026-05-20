@@ -16,7 +16,7 @@ Isi tabel ini setelah selesai semua eksperimen.
 | 1 | 5      | 512     | tanh       | adam      | 1.0    | 512   | 50     | 0.5     | ~10%     | ~683.5s    |
 | 2 | 2      | 512     | relu       | adam      | 0.001  | 128   | 30     | 0.2     | ~88.95%  | ~208.9s    | 
 | 3 | 2      | 256     | relu       | adam      | 0.001  | 64    | 50     | 0.3     | ~89.47%  | ~134.7s    |
-| 4 |        |         |            |           |        |       |        |         |          |            |
+| 4 | 4      | 256     | relu       | adam      | 0.0001 | 128   | 50     | 0.2     | ~89.14%  | ~82.7s     |
 | 5 |        |         |            |           |        |       |        |         |          |            |
 
 > **Eksperimen #0** = baseline (jangan ubah, ini patokan kalian).
@@ -108,13 +108,20 @@ Gunakan template di bawah untuk SETIAP eksperimen.
 ### Eksperimen #4
 
 **Apa yang diubah:**
+ada eksperimen nomor 4, dilakukan beberapa perubahan dibandingkan eksperimen nomor 3, yaitu batch size ditingkatkan dari 64 menjadi 128, dropout rate diturunkan dari 0.3 menjadi 0.2, serta learning rate diperkecil dari 0.001 menjadi 0.0001. Sementara itu, parameter lain seperti jumlah hidden layer, jumlah neuron, fungsi aktivasi, optimizer, dan epoch tetap dipertahankan. Perubahan ini membuat waktu training menjadi lebih cepat, namun akurasi model sedikit menurun dibandingkan eksperimen sebelumnya.
 
 **Hipotesis:**
+Penggunaan optimizer Adam dengan learning rate kecil (0.0001) serta penambahan hidden layer dan neuron diperkirakan dapat meningkatkan kemampuan model dalam mempelajari pola data sehingga akurasi meningkat dan proses konvergensi menjadi lebih stabil.
 
 **Hasil:**
+Test accuracy: 89.14%
+Train accuracy: 93.90%
+Validation accuracy: 89.98%
+Train time: 82.7 detik
+Apakah overfit/underfit? Sedikit overfitting ringan, namun masih dalam batas wajar
 
 **Observasi:**
-
+Grafik menunjukkan bahwa loss training terus menurun seiring bertambahnya epoch, sedangkan validation loss cenderung stabil setelah beberapa epoch terakhir. Accuracy training mencapai sekitar 93%, sementara validation accuracy berada di sekitar 90%, sehingga terdapat gap yang tidak terlalu besar antara data training dan validation. Hal ini menunjukkan model mampu mempelajari pola data dengan baik dan memiliki generalisasi yang cukup stabil. Penggunaan dropout 0.2 membantu mengurangi risiko overfitting pada model yang cukup dalam.
 ---
 
 ### Eksperimen #5
